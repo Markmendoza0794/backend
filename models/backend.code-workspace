@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../Dynamin User Interface"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Dynamin User Interface"
+	}
+}

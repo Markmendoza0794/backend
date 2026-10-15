@@ -1,7 +1,10 @@
-import * as bookService from '..Services/bookService.js';
+import mysql from 'mysql2/promise';
 
-export const fetchAllBooks = async (req,res) =>{
-    const books = await bookService.fetchAllBooks();
-    res.status(200).json(books);
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "librarydb"
+});
 
-} 
+export default pool;

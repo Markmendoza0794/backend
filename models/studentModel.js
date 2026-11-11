@@ -29,3 +29,21 @@ export const remove = async (id) => {
     );
     return result.affectedRows;
 }
+// CHECK
+export const findStudentBySrcode = async (student) => {
+    const [rows] = await pool.query(
+        'SELECT * FROM student WHERE srcode = ?',
+        [student.srcode]
+    );
+
+    return rows;
+};
+
+export const findStudentById = async (id) => {
+    const [rows] = await pool.query(
+        'SELECT * FROM student WHERE id = ?',
+        [id]
+    );
+
+    return rows;
+};

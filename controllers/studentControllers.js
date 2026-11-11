@@ -1,11 +1,13 @@
 import * as studentService from '../services/studentService.js';
 
+
 export const fetchAllstudents = async (req, res) => {
         const students = await studentService.fetchAllstudents();
         res.status(200).json(students);
     }
      
-    
+
+//CREATE
 export const createStudent = async (req, res) =>{
     const {name, srcode, program} = req.body;
     const student = {name, srcode, program};
@@ -18,8 +20,8 @@ export const createStudent = async (req, res) =>{
         });
     }catch(e){
         console.log(e);
-        res.status(500).json({
-            error: "Internal server Error"
+        res.status(e.statusCode || 500).json({
+            error: e.message
         });
     }
 }
@@ -28,6 +30,7 @@ export const editStudent = async (req, res) => {
     const {id} = req.params;
     const student = {id: parseInt(id), name, srcode, program};
 
+//UPDATE
     try {
         const updatedStudent = await studentService.updateStudent(student);
         res.status(200).json({
@@ -36,13 +39,13 @@ export const editStudent = async (req, res) => {
         });
     } catch(e) {
         console.log(e);
-        res.status(500).json({
-            error:"Internal Server Error"
+        res.status(e.statusCode || 500).json({
+            error: e.message
         });
     }
 }
 
-
+//DELETE
 export const deleteStudent = async (req, res) => {
     const {id} = req.params;
     try {
@@ -53,8 +56,8 @@ export const deleteStudent = async (req, res) => {
         });
     } catch(e) {
         console.log(e);
-        res.status(500).json({
-            error:"Internal Server Error"
+        res.status(e.statusCode || 500).json({
+            error: e.message
         });
     }
 }
